@@ -1,6 +1,7 @@
 package br.com.rafael.desafio.ui.view
 
 import android.support.annotation.StringRes
+import br.com.rafael.desafio.base.BaseView
 import br.com.rafael.desafio.model.Categoria
 
 interface ChuckNorrisView : BaseView {

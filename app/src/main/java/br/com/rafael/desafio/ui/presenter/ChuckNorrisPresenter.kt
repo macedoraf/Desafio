@@ -1,16 +1,16 @@
 package br.com.rafael.desafio.ui.presenter
 
 import br.com.rafael.desafio.R
+import br.com.rafael.desafio.base.BasePresenter
 import br.com.rafael.desafio.rest.ChuckNorrisApi
 import br.com.rafael.desafio.ui.view.ChuckNorrisView
-import io.reactivex.Scheduler
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
+
 
 class ChuckNorrisPresenter(baseView: ChuckNorrisView) : BasePresenter<ChuckNorrisView>(baseView) {
 
-    @Inject
+
     lateinit var chuckNorrisApi: ChuckNorrisApi
 
     private var subscription: Disposable? = null

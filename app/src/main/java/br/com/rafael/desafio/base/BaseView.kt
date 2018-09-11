@@ -1,4 +1,4 @@
-package br.com.rafael.desafio.ui.view
+package br.com.rafael.desafio.base
 
 import android.content.Context
 

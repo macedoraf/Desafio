@@ -1,4 +1,5 @@
 package br.com.rafael.desafio.model
 
-class Categoria {
+data class Categoria(val descricao: String) {
+
 }

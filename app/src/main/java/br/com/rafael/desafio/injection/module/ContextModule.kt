@@ -18,6 +18,8 @@ object ContextModule {
     }
 
 
+    @JvmStatic
+    @Provides
     internal fun provideApplication(context: Context): ChuckNorrisApplication {
         return context.applicationContext as ChuckNorrisApplication
     }

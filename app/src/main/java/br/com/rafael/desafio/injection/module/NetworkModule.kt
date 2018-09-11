@@ -14,12 +14,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     @Provides
-    @Reusable
     @JvmStatic
     internal fun provideChucknorrisApi(retrofit: Retrofit): ChuckNorrisApplication {
         return retrofit.create(ChuckNorrisApplication::class.java)
     }
 
+    @Provides
+    @JvmStatic
     internal fun provideRetrofitInterface(): Retrofit {
         return Retrofit.Builder()
                 .baseUrl("")

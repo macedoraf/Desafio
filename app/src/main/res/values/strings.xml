@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Desafio</string>
+    <string name="app_name">ChuckNorrisJokes</string>
+    <string name="erro">Erro</string>
 </resources>

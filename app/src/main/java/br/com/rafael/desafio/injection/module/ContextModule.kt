@@ -2,7 +2,7 @@ package br.com.rafael.desafio.injection.module
 
 import android.content.Context
 import android.view.View
-import br.com.rafael.desafio.ChuckNorrisApplication
+import br.com.rafael.desafio.utill.ChuckNorrisApplication
 import dagger.Module
 import dagger.Provides
 

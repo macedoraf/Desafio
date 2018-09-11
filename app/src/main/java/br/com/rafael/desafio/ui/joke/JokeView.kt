@@ -1,13 +1,13 @@
-package br.com.rafael.desafio.ui.view
+package br.com.rafael.desafio.ui.joke
 
 import android.support.annotation.StringRes
 import br.com.rafael.desafio.base.BaseView
-import br.com.rafael.desafio.model.Categoria
+import br.com.rafael.desafio.model.Joke
 
-interface ChuckNorrisView : BaseView {
+interface JokeView : BaseView {
 
 
-    fun update(categories: List<Categoria>)
+    fun update(joke: Joke)
 
     fun showError()
 

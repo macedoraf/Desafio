@@ -1,9 +1,11 @@
 package br.com.rafael.desafio.injection.module
 
-import br.com.rafael.desafio.ChuckNorrisApplication
+import android.provider.SyncStateContract
+import br.com.rafael.desafio.repository.rest.ChuckNorrisApi
+import br.com.rafael.desafio.utill.ChuckNorrisApplication
+import br.com.rafael.desafio.utill.URL_BASE
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -15,15 +17,15 @@ object NetworkModule {
 
     @Provides
     @JvmStatic
-    internal fun provideChucknorrisApi(retrofit: Retrofit): ChuckNorrisApplication {
-        return retrofit.create(ChuckNorrisApplication::class.java)
+    internal fun provideChucknorrisApi(retrofit: Retrofit): ChuckNorrisApi {
+        return retrofit.create(ChuckNorrisApi::class.java)
     }
 
     @Provides
     @JvmStatic
     internal fun provideRetrofitInterface(): Retrofit {
         return Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl(URL_BASE)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
                 .build()

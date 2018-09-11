@@ -1,14 +1,13 @@
-package br.com.rafael.desafio.ui.presenter
+package br.com.rafael.desafio.ui.joke
 
 import br.com.rafael.desafio.R
 import br.com.rafael.desafio.base.BasePresenter
-import br.com.rafael.desafio.rest.ChuckNorrisApi
-import br.com.rafael.desafio.ui.view.ChuckNorrisView
+import br.com.rafael.desafio.repository.rest.ChuckNorrisApi
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 
-class ChuckNorrisPresenter(baseView: ChuckNorrisView) : BasePresenter<ChuckNorrisView>(baseView) {
+class JokePresenter(baseView: JokeView) : BasePresenter<JokeView>(baseView) {
 
 
     lateinit var chuckNorrisApi: ChuckNorrisApi
@@ -17,14 +16,13 @@ class ChuckNorrisPresenter(baseView: ChuckNorrisView) : BasePresenter<ChuckNorri
 
     override fun onViewCreated() {
         super.onViewCreated()
-        loadPosts()
     }
 
 
-    fun loadPosts() {
+    fun loadJoke(categoria: String) {
         view.showLoading()
         subscription = chuckNorrisApi
-                .getCategoria()
+                .getJoke(categoria)
                 .subscribeOn(Schedulers.io())
                 .doOnTerminate { view.hideLoading() }
                 .subscribe(

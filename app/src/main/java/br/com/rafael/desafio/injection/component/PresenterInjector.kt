@@ -1,9 +1,9 @@
 package br.com.rafael.desafio.injection.component
 
+import br.com.rafael.desafio.base.BaseView
 import br.com.rafael.desafio.injection.module.ContextModule
 import br.com.rafael.desafio.injection.module.NetworkModule
-import br.com.rafael.desafio.ui.presenter.ChuckNorrisPresenter
-import br.com.rafael.desafio.base.BaseView
+import br.com.rafael.desafio.ui.categoria.CategoriaPresenter
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -12,7 +12,8 @@ import javax.inject.Singleton
 @Component(modules = [ContextModule::class, NetworkModule::class])
 interface PresenterInjector {
 
-    fun inject(chuckNorrisPresenter: ChuckNorrisPresenter)
+
+    fun inject(presenterT: CategoriaPresenter)
 
 
     @Component.Builder

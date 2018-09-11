@@ -1,8 +1,7 @@
-package br.com.rafael.desafio.ui.view.fragment
+package br.com.rafael.desafio.ui.categoria
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,14 +10,23 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.Toast
 import br.com.rafael.desafio.R
-import br.com.rafael.desafio.model.Categoria
-import br.com.rafael.desafio.ui.view.ChuckNorrisView
+import br.com.rafael.desafio.base.BaseFragment
+import br.com.rafael.desafio.ui.adapter.CategoriaAdapter
 
-class CategoriaFragment : Fragment(), ChuckNorrisView {
+class CategoriaFragment : BaseFragment<CategoriaPresenter>(), CategoriaView, (String) -> Unit {
 
+
+    override fun invoke(categoria: String) {
+        Toast.makeText(this.context, categoria, Toast.LENGTH_SHORT).show()
+    }
+
+    private var list: MutableList<String> = mutableListOf()
     private lateinit var recyclerView: RecyclerView
     private lateinit var progressBar: ProgressBar
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -27,25 +35,32 @@ class CategoriaFragment : Fragment(), ChuckNorrisView {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter.onViewCreated()
+    }
+
     private fun inicializaControles(view: View) {
         recyclerView = view.findViewById(R.id.recyclerView)
         progressBar = view.findViewById(R.id.progressBar)
 
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
         recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.adapter = CategoriaAdapter(list, this)
     }
 
 
-    override fun getContext(): Context {
-        return context
+    override fun getContexto(): Context {
+        return context!!
     }
 
-    override fun update(categories: List<Categoria>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+    override fun instantiatePresenter(): CategoriaPresenter {
+        return CategoriaPresenter(this)
     }
 
     override fun showError() {
@@ -53,7 +68,7 @@ class CategoriaFragment : Fragment(), ChuckNorrisView {
     }
 
     override fun showError(errorResId: Int) {
-        Toast.makeText(context, "ERRO", Toast.LENGTH_LONG).show()
+
     }
 
     override fun showLoading() {
@@ -62,5 +77,20 @@ class CategoriaFragment : Fragment(), ChuckNorrisView {
 
     override fun hideLoading() {
         progressBar.visibility = View.GONE
+        recyclerView.adapter?.notifyDataSetChanged()
+
+
+
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onViewDestroyed()
+    }
+
+    override fun update(categories: List<String>) {
+        list.clear()
+        list.addAll(categories)
     }
 }

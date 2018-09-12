@@ -1,8 +1,6 @@
 package br.com.rafael.desafio.injection.module
 
-import android.provider.SyncStateContract
 import br.com.rafael.desafio.repository.rest.ChuckNorrisApi
-import br.com.rafael.desafio.utill.ChuckNorrisApplication
 import br.com.rafael.desafio.utill.URL_BASE
 import dagger.Module
 import dagger.Provides

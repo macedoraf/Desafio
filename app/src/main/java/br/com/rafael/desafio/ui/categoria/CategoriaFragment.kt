@@ -8,16 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
 import br.com.rafael.desafio.R
 import br.com.rafael.desafio.base.BaseFragment
 import br.com.rafael.desafio.ui.adapter.CategoriaAdapter
+import br.com.rafael.desafio.ui.joke.JokeDialog
 
 class CategoriaFragment : BaseFragment<CategoriaPresenter>(), CategoriaView, (String) -> Unit {
 
 
     override fun invoke(categoria: String) {
-        Toast.makeText(this.context, categoria, Toast.LENGTH_SHORT).show()
+        var jokeDialog = JokeDialog()
+        var bundle = Bundle()
+        bundle.putString("categoria", categoria)
+        jokeDialog.arguments = bundle
+        jokeDialog.show(fragmentManager!!)
     }
 
     private var list: MutableList<String> = mutableListOf()
@@ -78,7 +82,6 @@ class CategoriaFragment : BaseFragment<CategoriaPresenter>(), CategoriaView, (St
     override fun hideLoading() {
         progressBar.visibility = View.GONE
         recyclerView.adapter?.notifyDataSetChanged()
-
 
 
     }

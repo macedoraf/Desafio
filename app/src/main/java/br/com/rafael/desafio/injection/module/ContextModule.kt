@@ -11,16 +11,16 @@ import dagger.Provides
 object ContextModule {
 
 
-    @JvmStatic
-    @Provides
-    internal fun provideContext(view: View): Context {
-        return view.context
-    }
+@JvmStatic
+@Provides
+internal fun provideContext(view: View): Context {
+    return view.context
+}
 
 
-    @JvmStatic
-    @Provides
-    internal fun provideApplication(context: Context): ChuckNorrisApplication {
-        return context.applicationContext as ChuckNorrisApplication
-    }
+@JvmStatic
+@Provides
+internal fun provideApplication(context: Context): ChuckNorrisApplication {
+    return context.applicationContext as ChuckNorrisApplication
+}
 }

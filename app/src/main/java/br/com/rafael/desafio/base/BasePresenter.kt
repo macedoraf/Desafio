@@ -5,6 +5,7 @@ import br.com.rafael.desafio.injection.component.PresenterInjector
 import br.com.rafael.desafio.injection.module.ContextModule
 import br.com.rafael.desafio.injection.module.NetworkModule
 import br.com.rafael.desafio.ui.categoria.CategoriaPresenter
+import br.com.rafael.desafio.ui.joke.JokePresenter
 
 abstract class BasePresenter<out V : BaseView>(protected val view: V) {
 
@@ -27,8 +28,8 @@ abstract class BasePresenter<out V : BaseView>(protected val view: V) {
     private fun inject() {
         when (this) {
 
-            is CategoriaPresenter -> injector.inject(this)
-//            is JokePresenter -> injector.inject(this)
+            is CategoriaPresenter -> injector.injectCategoria(this)
+            is JokePresenter -> injector.injectJoke(this)
 
         }
     }

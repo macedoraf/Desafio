@@ -1,4 +1,4 @@
 # Desafio
 ....
 
-Estudo de Dagger, MVP, RxJana Retrofit
+Estudo de Dagger, MVP, RxJava Retrofit
